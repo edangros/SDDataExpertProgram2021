@@ -16,5 +16,13 @@ print("")
 #print the rest lines
 for n1 in range(1,10):#row
     for n2 in range(1,10):#column
+        '''
+        이제 2칸+'X'
+        2칸+'='
+        ' ' + 2칸
+        따라서 3칸 3칸 3칸
+        줄맞춤 완-벽
+        '''
+
         print ("%-2dX%2d= %2d"%(n2, n1, n2*n1), end=" ")
     print("")# new line
