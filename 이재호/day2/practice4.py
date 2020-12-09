@@ -4,7 +4,12 @@
 
 #print the first line
 for n in range(1,10):   
-    print ("%-3s"%"#"+"%-2s"%(str(n)+"단")+"%3s"%"#", end=" ")
+    '''
+    #을 왼쪽정렬, 3칸
+    n단 글씨는 2칸(한글이 2칸 자리를 먹으므로 결과적으로 3칸)
+    #을 오른쪽정렬, 3칸
+    '''
+    print ("%-3s%-2s%3s"%("#",str(n)+"단","#"), end=" ")
 #insert line
 print("")
 
