@@ -14,7 +14,6 @@ def isPrime (num :int) ->bool:
         return True
     #check the number smaller than square
     for i in range(2,int(num**1/2)+1):
-        i=i+1
         #if the number can be devided by other number, its not prime
         if(num%i==0):
             return False

@@ -1,29 +1,7 @@
 #prob.8
 from timeit import default_timer as dt
+from test_7_noncache import isPrime
 #repetitive calling of the isprime improves the performance
-
-#use isPrime in Prob.7
-#=========================prob.7=================================
-def isPrime (num :int) ->bool:
-    """Check the number is prime
-
-    Args:
-        num (int): the number to check
-
-    Returns:
-        bool: if the number is prime number, return True. Return False if not.
-    """
-    #2 is the exception
-    if(num == 2):
-        return True
-    #check the number smaller than square
-    for i in range(2,int(num**1/2)+1):
-        #if the number can be devided by other number, its not prime
-        if(num%i==0):
-            return False
-    #return the value
-    return True
-#=====================================================================================
 
 def numberOfPrime(num   :int)   ->int:
     """count the prime numbers smaller than input number num
@@ -49,22 +27,23 @@ def numberOfPrime(num   :int)   ->int:
 #test code
 startt = dt() #initialize Timer
 print("prime numbers in 0-10 : %d"%numberOfPrime(10))
-print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+print("elapsed time : %.2fms"%((dt()-startt)*1000))
 startt = dt() #initialize Timer
 print("prime numbers in 0-100 : %d"%numberOfPrime(100))
-print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+print("elapsed time : %.2fms"%((dt()-startt)*1000))
 startt = dt() #initialize Timer
 print("prime numbers in 0-1000 : %d"%numberOfPrime(1000))
-print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+print("elapsed time : %.2fms"%((dt()-startt)*1000))
 startt = dt() #initialize Timer
 print("prime numbers in 0-10000 : %d"%numberOfPrime(10000))
-print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+print("elapsed time : %.2fms"%((dt()-startt)*1000))
+startt = dt() #initialize Timer
 
 #Computer will explode if use that large number with this algorithm...
 
 ###startt = dt() #initialize Timer
 ###print("prime numbers in 0-100000 : %d"%numberOfPrime(100000))
-###print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+###print("elapsed time : %.2fms"%((dt()-startt)*1000))
 
 '''
 prime numbers in 0-10 : 5
