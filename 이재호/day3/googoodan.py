@@ -3,12 +3,14 @@
 #중복시 다시 생성 알고리즘 -> 운이 아주 나쁠 경우 구구단 생성시간이 길어짐
 #미리 만들고 섞은 뒤 차례로 뽑는 알고리즘 -> '항상' 중복 방지 (카드섞기 알고리즘!)
 #결과는 리스트, aXb = ans (o)...
+
 import random
 from timeit import default_timer as dt
 googoolist  :list[tuple[int,int]] = [] #모든 구구단 정보가 담긴 리스트!
 
-for i in range(1,10):
-    for j in range(1,10):
+#2단 제외!
+for i in range(3,10):
+    for j in range(3,10):
         #5단은 빼래
         if(i!=5)and(j!=5):#룰 더 정하려면 if문 추가할것
             googoolist.append((i,j))
@@ -22,15 +24,22 @@ for i in range(0,len(googoolist)):
     googoolist[i] = googoolist[j]
     googoolist[j] = temp
 
+#그런데 중복되지 않는 구구단 갯수에는 한계가 있음
+#따라서 구구단 갯수 최댓값을 정하자
 while True:
     try:
-        opportunity = int(input("몇 번 할까요? : "))
+        opportunity = int(input("몇 번 할까요? (최대 20회): "))
     except:
         print("숫자를 입력하세요")
         continue
     else:
         break
-#구구단 파트
+#최대값 넘길시 20으로 재조정
+opportunity = min(opportunity,20)
+
+# ======================================
+# =============구구단 파트==============
+# ======================================
 count   :int = 0
 probs   :list[str] =[]
 correctAns  :int = 0
@@ -66,9 +75,11 @@ while count < opportunity:
             probs.append("%dX%d = \t"%googoolist[count]+str(inp)+"\t(X)\t정답 : %d"%realAns)
     #아예 숫자를 입력 안하면 에러
     except ValueError:
-        print("숫자를 입력하셨어야죠.(소요시간:%.1ss)"%(dt()-st),end="")
+        print("숫자를 입력하셨어야죠.(소요시간:%.1ss)\n다음문제"%(dt()-st),end="")
         probs.append("%dX%d = \t"%googoolist[count]+"\t에러(X)\t정답 : %d"%realAns)
     count = count +1
+
+
 print("문제종료")
 print("%d번중 정답 %d번, 오답 %d번, 에러 %d번"%(opportunity,correctAns,wrongAns,(opportunity-correctAns-wrongAns)))
 print("총 소요시간 : %.1fs"%(dt()-initialtime))
