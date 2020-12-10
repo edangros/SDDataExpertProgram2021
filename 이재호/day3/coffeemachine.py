@@ -14,6 +14,8 @@
 menu    :list[tuple[str,int]] = []
 order   :dict[tuple[str,int],int] = {}
 #set menus
+#(메뉴이름,가격) 튜플을 사용할거야! -> 두개의 리스트는 불안하니까 메뉴와 가격을 무조건 짝지음
+#문자열과 마찬가지로 튜플은 딕셔너리 키로 사용 가능 ("에스프레소3000"이나 마찬가지. 고유한 데이터)
 menu.append(("에스프레소",3000))
 menu.append(("아메리카노",3500))
 menu.append(("카페라떼",5000))
@@ -25,6 +27,8 @@ print("===가격표===")
 for item in menu:
     print("%s\t\t\t%d"%item)#tab을 이용해 위치 정렬. 튜플 데이터형이므로 바로 넣을 수 있음
 print("")#줄바꿈
+input("주문을 진행하시려면 Enter를 눌러주세요")
+print("")
 for item in menu:
     while True:#이상한거 입력하면 다시 돌려
         try:

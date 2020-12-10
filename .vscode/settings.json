@@ -1,7 +1,9 @@
 {
 
     "python.analysis.extraPaths": [
-        "C:/PyStudy/이재호/day3"
+        "C:/PyStudy/이재호/day3",
+        "C:/PyStudy/이재호/day2",
+        "C:/PyStudy/이재호/day1"
     ],
     "python.pythonPath": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
 }
