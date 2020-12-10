@@ -25,7 +25,7 @@ def isPrime (num :int) ->bool:
         if (num % pn)==0:
             return False
 
-    #2nd check : devide by the numbers within the maximum primenumbers - root(num)
+    #2nd check : devide by the numbers within the maximum primenumbers - squareroot(num)
     for nn in range(pn,int(num**0.5)):
         if (num % nn)==0:
             return False
