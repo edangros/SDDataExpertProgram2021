@@ -1,6 +1,6 @@
 #prob.8
 from timeit import default_timer as dt
-from test_7_noncache import isPrime
+from test_7_noncache import isPrime #import module!
 #repetitive calling of the isprime improves the performance
 
 def numberOfPrime(num   :int)   ->int:

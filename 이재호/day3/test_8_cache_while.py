@@ -29,11 +29,11 @@ def isPrime (num :int) ->bool:
 
     #2nd check : devide by the numbers within the maximum primenumbers - root(num)
     #while seems faster than for
-
     while pn <= int(num**0.5):
         if (num % pn)==0:
             return False
         pn += 1
+
     #For now, the number is prime number so add it to the list
     primenumbers.append(num)
     return True
@@ -64,19 +64,19 @@ def numberOfPrime(num   :int)   ->int:
 #test code
 startt = dt() #initialize Timer
 print("prime numbers in 0-10 : %d"%numberOfPrime(10))
-print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+print("elapsed time : %.2fms"%((dt()-startt)*1000))
 startt = dt() #initialize Timer
 print("prime numbers in 0-100 : %d"%numberOfPrime(100))
-print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+print("elapsed time : %.2fms"%((dt()-startt)*1000))
 startt = dt() #initialize Timer
 print("prime numbers in 0-1000 : %d"%numberOfPrime(1000))
-print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+print("elapsed time : %.2fms"%((dt()-startt)*1000))
 startt = dt() #initialize Timer
 print("prime numbers in 0-10000 : %d"%numberOfPrime(10000))
-print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+print("elapsed time : %.2fms"%((dt()-startt)*1000))
 startt = dt() #initialize Timer
 print("prime numbers in 0-100000 : %d"%numberOfPrime(100000))
-print("eleapsed time : %.2fms"%((dt()-startt)*1000))
+print("elapsed time : %.2fms"%((dt()-startt)*1000))
 
 '''
 prime numbers in 0-10 : 4
