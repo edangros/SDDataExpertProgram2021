@@ -38,7 +38,7 @@ def binarySearch(num    :int, minimum   :int, maximum   :int) -> int:
     tempmax = maximum
     while True:
         count += 1
-        n = (tempmin+tempmax)//2
+        n = int((tempmin+tempmax)/2+0.5)#1이 나오면 오류가 있네. 반올림하자
         if (n==num):
             break
         elif (n>num):
@@ -46,6 +46,7 @@ def binarySearch(num    :int, minimum   :int, maximum   :int) -> int:
         else:
             tempmin = n-1#일단 옮겨놓은 뒤 range 미세조정 -> 엉뚱한데 끼어있는거 방지
         if (count >= maximum*10):#무한루프방지구문
+            print(num)
             break
 
     return count
@@ -61,4 +62,7 @@ for i in range(1,11):
     cnt_bi += binarySearch(ans,min,max)
 
 print("10번 결과 선형탐색은 %d번, 이진탐색은 %d번"%(cnt_lin,cnt_bi))
-    
+'''
+10번 결과 선형탐색은 461번, 이진탐색은 54번
+
+'''
