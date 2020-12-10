@@ -11,8 +11,8 @@
 '''
 
 #initialization
-menu    :list[tuple[str,int]] = []
-order   :dict[tuple[str,int],int] = {}
+menu     = []
+order    = {}
 #set menus
 #(메뉴이름,가격) 튜플을 사용할거야! -> 두개의 리스트는 불안하니까 메뉴와 가격을 무조건 짝지음
 #문자열과 마찬가지로 튜플은 딕셔너리 키로 사용 가능 ("에스프레소3000"이나 마찬가지. 고유한 데이터)
@@ -42,7 +42,7 @@ for item in menu:
 price   :int = 0
 print("===주문서===")
 for item in menu:
-    print("%s  (%d원)"%item+"\t\t\t:%d개\t\t%d원"%(order[item],order[item]*item[1]))
+    print(("%s  (%d원)"%item) + ("\t\t\t:%d개\t\t%d원"%(order[item],order[item]*item[1])))
     price += (order[item]*item[1])
 print("============")
 print("총액 : %d"%price)

@@ -49,6 +49,7 @@ timeout     :int = 3
 initialtime = dt()
 st          :float = 0.0
 #이제 그냥 가장 앞 n개만 뽑으면 됨
+print("문제시작:",end="")
 while count < opportunity:
     #그냥 앞에서부터 하나씩 긁어오기만 해도 충-분
     realAns = (googoolist[count][0]*googoolist[count][1])
@@ -71,11 +72,11 @@ while count < opportunity:
                 probs.append("%dX%d = \t"%googoolist[count]+str(inp)+"\t(Timeout)")
         #답을 틀려도 오답
         else:
-            print("틀렸네요. 답은 %d입니다.(소요시간:%.1ss)\n다음문제"%(realAns,dt()-st),end="")
+            print("틀렸네요. 답은 %d입니다.(소요시간:%.1ss)\n다음문제:"%(realAns,dt()-st),end="")
             probs.append("%dX%d = \t"%googoolist[count]+str(inp)+"\t(X)\t정답 : %d"%realAns)
     #아예 숫자를 입력 안하면 에러
     except ValueError:
-        print("숫자를 입력하셨어야죠.(소요시간:%.1ss)\n다음문제"%(dt()-st),end="")
+        print("숫자를 입력하셨어야죠.(소요시간:%.1ss)\n다음문제:"%(dt()-st),end="")
         probs.append("%dX%d = \t"%googoolist[count]+"\t에러(X)\t정답 : %d"%realAns)
     count = count +1
 
