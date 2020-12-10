@@ -17,7 +17,8 @@ word    :str        = "" #선정된 문자
 input("준비되었으면 Enter를 누르세요")
 #타이머 초기화
 st = pt()
-#메인루프
+
+#메인루프 -> break로만 빠져나올 수 있음
 while True:
     #문제 구문
     tries += 1
