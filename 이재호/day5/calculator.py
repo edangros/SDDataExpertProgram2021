@@ -7,6 +7,7 @@ def calculate(inp):
         if type(inp[i]) is list:
             inp[i] = calculate(inp[i])
     while True:
+        print(inp)
         #끝이면 루프 나감
         if len(inp) == 1:
             break
@@ -28,7 +29,6 @@ def calculate(inp):
             inp[0]=str(v1/v2)+tail#여기서 오류날 수 있음
         #pos+1번은 이미 끝난 계산이니 없애버림!
         del inp[1]
-        print(inp)
     #다 끝났으면 숫자 하나 + '+' 남겠네
     return inp[0]
 
@@ -61,7 +61,7 @@ while True: #프로그램 메인 루프
     #1: [3+,12+,[[5+,6*],7]] ->1+2까지 계산하고 다음은 가장 안쪽 리스트인 3*4 계산
     #2: [15+,77] ->3+12까지 계산하고 가장 안쪽 리스트인 5+6, 그 다음 안쪽 리스트인 11*7 계산
     #3: [92]->다시 15+77 계산
-    #...귀찮아 괄호는 안할래
+    #다시 말해 괄호 갯수 = 리스트로 씌워진 횟수임! (레벨이라 부르겠음)
 
     #6*(1+3)
     #(1+3)*6
@@ -82,9 +82,14 @@ while True: #프로그램 메인 루프
         if eq[i] == "(":
             #이전 글씨가 숫자였다면 곱하기 하나 붙여 밖으로 뺌
             if i!=0 and eq[i-1] in "0123456789":
+                if not multdiv[level]: #곱셈/나눗셈중이 아니라면 레벨 하나 들어가야함
+                    multdiv[level] = True
+                    temp = [] #temp에 새로운 리스트 만들고
+                    levellist[level].append(temp) #결과 리스트에 temp 집어넣고
+                    level += 1 #레벨을 하나 더 들어가서
+                    levellist.append(temp) #temp의 레퍼런스를 작업중인 새 레벨에 집어넣음
+                    multdiv.append(True) #새로운 레벨에도 곱셈 검사여부 만듬. 이전이 곱셈이었으니 일단 값은 True임
                 levellist[level].append(eq[lastpos:i]+"*")
-                #그리고 곱셈은 true다
-                multdiv[level] = True
             #무조건 레벨 올려야죠
             temp = [] #temp에 새로운 리스트 만들고
             levellist[level].append(temp) #결과 리스트에 temp 집어넣고
@@ -93,7 +98,6 @@ while True: #프로그램 메인 루프
             multdiv.append(False) #새로운 레벨에도 곱셈 검사여부 만듬. 새로운 시작이니 False로 진행
             count_left += 1 #괄호수 하나 증가
             lastpos = i+1 #다음 문자로 포인터 옮김
-            print("level up")
         #lastpos가 더 큰 상태면 그냥 스킵
         if lastpos>=i:
             continue
@@ -106,11 +110,11 @@ while True: #프로그램 메인 루프
             levellist[level].append(eq[lastpos:i+1]) #연산자까지 불러옵시다
             #이전 문자가 곱셈/나눗셈중이었다면 레벨을 1단계 되돌림
             if multdiv[level]:
-                print("level down")
                 #multdiv 정리
                 del multdiv[level]
                 levellist.remove(levellist[level])#현재 레벨 리스트에서 제외
                 level -= 1
+                multdiv[level] = False#아랫쪽 곱셈도 끝난거임
             lastpos = i+1 #다음 문자로 포인터 옮김
         #여기가 재미있는건데 리스트를 한겹 더 씌워서 우선계산해야 한다는걸 표시할 겁니다.
         if eq[i] in "*/": #곱셈,나눗셈이라면
@@ -121,7 +125,6 @@ while True: #프로그램 메인 루프
                 level += 1 #레벨을 하나 더 들어가서
                 levellist.append(temp) #temp의 레퍼런스를 작업중인 새 레벨에 집어넣음
                 multdiv.append(True) #새로운 레벨에도 곱셈 검사여부 만듬. 이전이 곱셈이었으니 일단 값은 True임
-                print("level up")
             levellist[level].append(eq[lastpos:i+1]) #그리고 연산자까지 입력
             lastpos = i+1 #다음 문자로 포인터 옮김
         #괄호도 처리
@@ -140,11 +143,25 @@ while True: #프로그램 메인 루프
                     level -= 1 #레벨을 하나 더 내림
                     count_right += 1 #괄호수 하나 증가
                     lastpos = j+1 #다음 문자로 포인터 옮김
-                    print("level down")
-                    print(multdiv)
-                    print(eqlist)
                 else:
                     if eq[j] in "+-/*":
+                        temp.append(eq[currlastpos:j+1].replace(")","")) #연산자가 집혔으면 그거 뱉음
+                        #이전 문자가 곱셈/나눗셈중이었다면 레벨을 1단계 되돌림
+                        if multdiv[level]:
+                            #multdiv 정리
+                            del multdiv[level]
+                            levellist.remove(levellist[level])#현재 레벨 리스트에서 제외
+                            level -= 1
+                            multdiv[level] = False#아랫쪽 곱셈도 끝난거임
+                        lastpos = j+1 #다음 문자로 포인터 옮김
+                    elif eq[j] in "/*":
+                        if not multdiv[level]: #곱셈/나눗셈중이 아니라면 레벨 하나 들어가야함
+                            multdiv[level] = True
+                            temp = [] #temp에 새로운 리스트 만들고
+                            levellist[level].append(temp) #결과 리스트에 temp 집어넣고
+                            level += 1 #레벨을 하나 더 들어가서
+                            levellist.append(temp) #temp의 레퍼런스를 작업중인 새 레벨에 집어넣음
+                            multdiv.append(True) #새로운 레벨에도 곱셈 검사여부 만듬. 이전이 곱셈이었으니 일단 값은 True임
                         temp.append(eq[currlastpos:j+1].replace(")","")) #연산자가 집혔으면 그거 뱉음
                         lastpos = j+1 #다음 문자로 포인터 옮김
                     else:
@@ -153,9 +170,6 @@ while True: #프로그램 메인 루프
                 j += 1#다음 글자 확인
         if parsing_error: #돌리다가 파싱 에러가 난 상태면 루프 종료
             break
-        print(level)
-        print(multdiv)
-        print(eqlist)
 
 
     #괄호 수가 다르다면 이것도 파싱에러
@@ -179,5 +193,7 @@ while True: #프로그램 메인 루프
         
 
 
-#(1+3)*5+5*5+5(1+3)+5*(1+3)
+#(1+3)*5+5*5+5(1+3)+5*(1+3)+(1+3)*5
 
+#괄호곱셈 오류있음
+#고치려면 다 뜯어고쳐야 할 삘인데
