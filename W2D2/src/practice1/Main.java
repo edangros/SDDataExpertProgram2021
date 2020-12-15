@@ -1,4 +1,4 @@
-package com.w2d2;
+package practice1;
 
 
 //파이썬에서는 그냥 쳤던거지만 '객체 지향 언어'인 자바에서는 프로그램 메인도 클래스입니다
@@ -11,7 +11,7 @@ public class Main {
     //그러면 powerpoint의 main 함수에 인자로 abc.ppt를 넘겨 실행
     //powerpoint는 main에 인자로 넘어온 파일명을 기반으로 프로그램을 실행시켜 파일을 열어 편집할 수 있게 함
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
         //The most well-known 'Hello World' code.
         //print같은것도 안씁니다. 모든 게 개체이므로 우리가 띄워주는 콘솔창도 클래스입니다
         //작동시스템 클래스에 덥속해서 그 출력 인터페이스 out클래스에 접속, 그 out의 println 메서드를 실행시킵니다
