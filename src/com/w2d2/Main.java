@@ -13,6 +13,8 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         //The most well-known 'Hello World' code.
+        //print같은것도 안씁니다. 모든 게 개체이므로 우리가 띄워주는 콘솔창도 클래스입니다
+        //작동시스템 클래스에 덥속해서 그 출력 인터페이스 out클래스에 접속, 그 out의 println 메서드를 실행시킵니다
         System.out.println("Hello World");
     }
 }
