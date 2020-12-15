@@ -6,7 +6,7 @@ public class PAdvancedFor {
     //다른 언어들(C#등)에서는 'Foreach'라고도 부릅니다. 참고만 하세요
     public static void main(String[] args){
 
-        String[] names = {"James", "Ryan", "Alice", "Jean", "Lily"}; //'배열' 또는 '열거형'이라 부릅니다.
+        String[] names = {"James", "Ryan", "Alice", "Jean", "Lily"}; //'배열'이라 부릅니다.
         //리스트랑 같으면서도 많이 달라요. 다르기는 아주 많이 다릅니다.
 
         //문자열 배열 내의 각 항목을 순회하며 실행
