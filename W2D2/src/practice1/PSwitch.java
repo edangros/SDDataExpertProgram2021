@@ -32,7 +32,15 @@ public class PSwitch {
             default:
                 s = "D";
         }
-        System.out.printf("학점은 %s 입니다%n", s);
+        //파이썬이랑 똑같습니다. 문자열 포맷팅은 프로그래밍 언어랑 상관없이 거의 비슷합니다.
+        //다만 자바에서는 모든 타입이 '명확할 것'을 요구하기 때문에 포맷된 문자열을 쓰겠다면 그에 맞는 메서드를 사용해야 합니다.
+        //파이썬이 특이한거에요.
+        //printf = 포맷된 문자열을 사용하겠다는 선언
+        System.out.printf("학점은 %s 입니다\n", s); //파이썬에서는 print("학점은 %s 입니다\n"%s)
+        //아래 코드도 동일한 일을 합니다.
+        //String.format => 인수를 받아 포맷된 문자열을 반환
+        //Println => 줄바꿈이 있는 출력
+        System.out.println(String.format("학점은 %s 입니다",s)); //파이썬에서는 print("학점은 %s 입니다\n"%s)
 
     }
 }
