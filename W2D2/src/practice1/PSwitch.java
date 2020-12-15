@@ -41,6 +41,6 @@ public class PSwitch {
         //String.format => 인수를 받아 포맷된 문자열을 반환
         //Println => 줄바꿈이 있는 출력
         System.out.println(String.format("학점은 %s 입니다",s)); //파이썬에서는 print("학점은 %s 입니다\n"%s)
-
+        scanner.close();
     }
 }

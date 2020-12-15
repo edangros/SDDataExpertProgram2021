@@ -30,6 +30,6 @@ public class Hello {
     //모든 인스턴스가 하나의 값을 공유합니다.
     //ex : public class A의 맴버변수 public static int a와 public int b가 있다면
     //      두 인스턴스 aa와 bb에서 aa.a는 bb.a와 같음. 하나를 바꾸면 반대쪽도 같이 바뀜
-    //      aa.b와 bb.b는 다름(클래스가 생성될 때 만들어짐)
+    //      aa.b와 bb.b는 다름(클래스의 인스턴스가 생성될 때 만들어짐)
     //'정적 클래스'는 이것이 자바다 책 중간쯤에 나오는 '싱글톤'과 비슷하면서도 다릅니다. - 참고
 }
