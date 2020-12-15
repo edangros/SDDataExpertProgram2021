@@ -8,7 +8,7 @@ public class Main {
     // 대표적으로 '연결 프로그램'으로 파일을 열 때를 생각하시면 되는데, 연결 프로그램을 실행시킬 때에는 아래와 같은 방식입니다.
     //  abc.ppt를 파워포인트로 연다
     //  커멘드라인에서는 powerpoint abc.ppt같은 식으로 실행시킴(이건 OS가 대신 해줌)
-    //  그러면 powerpoint의 main 함수에 인자로 abc.ppt를 넘겨 실행
+    //  그러면 powerpoint의 main 함수에 인자로 abc.ppt를 넘겨 실행. abc.ppt는 String[] args에 들어있음
     //  powerpoint는 main에 인자로 넘어온 파일명을 기반으로 프로그램을 실행시켜 파일을 열어 편집할 수 있게 함
     public static void main(String[] args) {
         // write your code here
