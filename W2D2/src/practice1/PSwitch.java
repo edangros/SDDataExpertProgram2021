@@ -14,19 +14,16 @@ public class PSwitch {
         // 오로지 괄호랑 줄바꿈만 고려하고
         // case문 아래에서는 괄호를 쓰지 않으므로
         // case문 하위항목에서는 break를 만나 switch문을 빠져나가지 않는 한 그대로 아랫줄을 진행합니다.
-        switch (score/10){
+        switch (score/10){//결과값은 0-10이 되겠네?
             case 10:
             case 9:
             case 8:
                 s = "A";
                 break;
-            case 7:
-            case 6:
-            case 5:
+            case 7: case 6: case 5: //엔터키를 고려하지 않으니 이런 괴상한 일도 가능
                 s = "B";
                 break;
-            case 4:
-            case 3:
+            case 4: case 3:
                 s = "C";
                 break;
             default:
@@ -42,5 +39,10 @@ public class PSwitch {
         //Println => 줄바꿈이 있는 출력
         System.out.println(String.format("학점은 %s 입니다",s)); //파이썬에서는 print("학점은 %s 입니다\n"%s)
         scanner.close();
+
+        //삼항연산자를 쓰면 저 긴 게 한줄로 됩니다(????!)
+        s = (score>=80)? "A": (score>=50)? "B": (score>=30)? "C":"D"; //if-else if 문과 같은 역할이긴...한데...
+        System.out.println(String.format("학점은 %s 입니다",s));
+
     }
 }
