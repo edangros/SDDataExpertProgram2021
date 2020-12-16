@@ -47,10 +47,10 @@ public class Star {
 
 
         //1번방법 '자바스럽게' 고치기 (2)
-        // 자료형 string이 아닌 string의 레퍼 클래스(wrapper class)인 String을 쓰는 방법도 있습니다.
-        String sClass = "*";//string이 아닌 String으로 선언!
+        String sClass = "*";
         for(int i = 0;i<10;i++){
-            System.out.println(sClass.repeat(i));//String 클래스의 repeat 메서드 실행! => 지정 횟수만큼 반복
+            //String 클래스의 repeat 메서드 실행! => 지정 횟수만큼 반복한 리터럴 반환!
+            System.out.println(sClass.repeat(i));
         }//더 '간단한' 방법이 있기 때문이죠.
 
 
