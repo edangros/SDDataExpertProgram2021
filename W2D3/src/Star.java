@@ -45,7 +45,17 @@ public class Star {
             System.out.println(st);
         }//뭔가 이쯤 되면 왜 이리 복잡하냐 싶으시겠지만 다 이유가 있습니다.
 
+
+        //1번방법 '자바스럽게' 고치기 (2)
+        // 자료형 string이 아닌 string의 레퍼 클래스(wrapper class)인 String을 쓰는 방법도 있습니다.
+        String sClass = "*";//string이 아닌 String으로 선언!
+        for(int i = 0;i<10;i++){
+            System.out.println(sClass.repeat(i));//String 클래스의 repeat 메서드 실행! => 지정 횟수만큼 반복
+        }//더 '간단한' 방법이 있기 때문이죠.
+
+
         //별그리기 방법 2 : 지정된 횟수만큼 그리기
+        //골치아픈 문자열 처리를 피하려면 이런 방법도 있습니다. 다만 클래스 메서드 쓰는게 훨씬 간단하네요.
         for(int i = 0; i<10; i++){
             for(int j = 0;j<=i;j++){
                 System.out.print("*");//* 하나만, 줄바꿈 없이 그림
@@ -54,11 +64,9 @@ public class Star {
         }
 
         //별그리기 응용 : 거꾸로 그리기
+        sClass = "*";
         for(int i = 0;i<10;i++){
-            for(int j = 0; j<(10-i); j++){//부등호 주의!
-                System.out.print("*");//* 하나만, 줄바꿈 없이 그림
-            }
-            System.out.println();//줄바꾸기
+            System.out.println(sClass.repeat(10-i));
         }
     }
 }
