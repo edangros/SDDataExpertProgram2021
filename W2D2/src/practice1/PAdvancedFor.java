@@ -13,6 +13,7 @@ public class PAdvancedFor {
         for(String name : names){ //파이썬으로 치면 for name in names
             System.out.println("Hello, "+name);
         }
+
     }
 
 }
