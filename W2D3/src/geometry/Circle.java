@@ -18,10 +18,6 @@ public class Circle extends Geometry{
 
 
     @Override
-    /**
-     * The cover area of the circle. consider PI as 3.14
-     * @return area of the circle
-     */
     public double getArea(){
         return (r*r*3.14);
     }
