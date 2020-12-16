@@ -10,6 +10,7 @@ public class GeoExample {
         System.out.println(rec1.overlappedWith(rec2));
         System.out.println(rec1.overlappedWith(rec3));
         System.out.println(rec1.overlappedWith(cir1));
+        System.out.println(cir1.overlappedWith(rec1));
         System.out.println(rec1.overlappedWith(cir2));
         System.out.println(rec1.overlappedWith(rec1));
     }
