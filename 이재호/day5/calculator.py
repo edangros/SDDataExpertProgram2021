@@ -90,6 +90,7 @@ while True: #프로그램 메인 루프
                     levellist.append(temp) #temp의 레퍼런스를 작업중인 새 레벨에 집어넣음
                     multdiv.append(True) #새로운 레벨에도 곱셈 검사여부 만듬. 이전이 곱셈이었으니 일단 값은 True임
                 levellist[level].append(eq[lastpos:i]+"*")
+                print (eqlist)
             #무조건 레벨 올려야죠
             temp = [] #temp에 새로운 리스트 만들고
             levellist[level].append(temp) #결과 리스트에 temp 집어넣고
@@ -98,6 +99,7 @@ while True: #프로그램 메인 루프
             multdiv.append(False) #새로운 레벨에도 곱셈 검사여부 만듬. 새로운 시작이니 False로 진행
             count_left += 1 #괄호수 하나 증가
             lastpos = i+1 #다음 문자로 포인터 옮김
+            print (eqlist)
         #lastpos가 더 큰 상태면 그냥 스킵
         if lastpos>=i:
             continue
@@ -116,6 +118,7 @@ while True: #프로그램 메인 루프
                 level -= 1
                 multdiv[level] = False#아랫쪽 곱셈도 끝난거임
             lastpos = i+1 #다음 문자로 포인터 옮김
+            print (eqlist)
         #여기가 재미있는건데 리스트를 한겹 더 씌워서 우선계산해야 한다는걸 표시할 겁니다.
         if eq[i] in "*/": #곱셈,나눗셈이라면
             if not multdiv[level]: #곱셈/나눗셈중이 아니라면 레벨 하나 들어가야함
@@ -127,15 +130,16 @@ while True: #프로그램 메인 루프
                 multdiv.append(True) #새로운 레벨에도 곱셈 검사여부 만듬. 이전이 곱셈이었으니 일단 값은 True임
             levellist[level].append(eq[lastpos:i+1]) #그리고 연산자까지 입력
             lastpos = i+1 #다음 문자로 포인터 옮김
+            print (eqlist)
         #괄호도 처리
         #한단계 나올시
         if eq[i] == ")":
             #다음 연산자 취득해서 합친 뒤 append
             #괄호가 아닌 글자를 찾아야 함
             j = i #i부터 검색 시작
-            temp = levellist[level] #현재 레벨배열 기억
             currlastpos = lastpos #현재 마지막문자열 기억
             while True: #검색 루프
+                print("lp:",currlastpos)
                 if eq[j]==")": #괄호가 나올 때마다
                     #레벨리스트는 정리하면 큰일남;;
                     del multdiv[level]
@@ -144,7 +148,8 @@ while True: #프로그램 메인 루프
                     count_right += 1 #괄호수 하나 증가
                     lastpos = j+1 #다음 문자로 포인터 옮김
                 else:
-                    if eq[j] in "+-/*":
+                    if eq[j] in "+-":
+                        temp = levellist[level] #현재 레벨배열 기억
                         temp.append(eq[currlastpos:j+1].replace(")","")) #연산자가 집혔으면 그거 뱉음
                         #이전 문자가 곱셈/나눗셈중이었다면 레벨을 1단계 되돌림
                         if multdiv[level]:
@@ -154,16 +159,19 @@ while True: #프로그램 메인 루프
                             level -= 1
                             multdiv[level] = False#아랫쪽 곱셈도 끝난거임
                         lastpos = j+1 #다음 문자로 포인터 옮김
+                        print (eqlist)  
                     elif eq[j] in "/*":
-                        if not multdiv[level]: #곱셈/나눗셈중이 아니라면 레벨 하나 들어가야함
+                        if not multdiv[level]: #곱셈/나눗셈중이 아니라면 레벨 하나 들어가야함. 그런데 얘 말고 괄호 전체가 다.
                             multdiv[level] = True
-                            temp = [] #temp에 새로운 리스트 만들고
-                            levellist[level].append(temp) #결과 리스트에 temp 집어넣고
+                            temp = [levellist[level][:]] #temp에 새로운 리스트를 만드는데, 그건 이번 리스트를 복사하고 껍데기 씌운거임
+                            print(")*",temp,temp[0])
+                            levellist[level]=temp #이전 레퍼런스 다시 할당해주고
+                            levellist.append(temp[0]) #새 레퍼런스도 투입
                             level += 1 #레벨을 하나 더 들어가서
-                            levellist.append(temp) #temp의 레퍼런스를 작업중인 새 레벨에 집어넣음
                             multdiv.append(True) #새로운 레벨에도 곱셈 검사여부 만듬. 이전이 곱셈이었으니 일단 값은 True임
-                        temp.append(eq[currlastpos:j+1].replace(")","")) #연산자가 집혔으면 그거 뱉음
+                        levellist[level].append(eq[currlastpos:j+1].replace(")","")) #곱셈나눗셈 집혔으면 그거 뱉음
                         lastpos = j+1 #다음 문자로 포인터 옮김
+                        print (level,eqlist)
                     else:
                         parsing_error = True #그게 아니면 파싱에러지 뭐
                     break
@@ -197,3 +205,6 @@ while True: #프로그램 메인 루프
 
 #괄호곱셈 오류있음
 #고치려면 다 뜯어고쳐야 할 삘인데
+#[1+3*]5+에서 [1+3*을 통째로 위로 올려야 함]
+#3*5+에서 3*을 통째로 위로 올려야 함
+#그러면 저렇게 하면 안되네
