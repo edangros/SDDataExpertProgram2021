@@ -42,7 +42,6 @@ public class Rect extends Geometry{
         ex[2] = ex[3] = rectangle.x+rectangle.w;
         ey[0] = ey[2] = rectangle.y;
         ey[1] = ey[3] = rectangle.y+rectangle.h;
-        boolean res = false;
         //네 꼭짓점 중 하나만 안에 있어도 ok.
         for(int i=0;i<4;i++){
             if(this.isIn(ex[i],ey[i])){return true;}
@@ -65,7 +64,7 @@ public class Rect extends Geometry{
         d[3] = ((this.x+this.w) - circle.x)*((this.x+this.w) - circle.x)+((this.y+this.h) - circle.y)*((this.y+this.h)-circle.y);
         boolean res = false;
         for(int dis : d){
-            if(dis<=(circle.r*circle.r)){res = true;}
+            if(dis<=(circle.r*circle.r)){res = true;break;}
         }
         return res;
     }
