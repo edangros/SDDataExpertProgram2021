@@ -20,6 +20,7 @@ public class Rect extends Geometry{
      * The cover area of the rectangle
      * @return area of the rectangle
      */
+    @Override
     public double getArea(){
         return w*h;
     }
@@ -57,18 +58,20 @@ public class Rect extends Geometry{
     private boolean overlappedWithCircle(Circle circle){
         //원과의 충돌도 비슷.
         //네 꼭짓점 중 하나만 원 안에 있으면 ok.
-        int[] d = new int[4];
-        d[0] = (this.x - circle.x)*(this.x - circle.x)+(this.y - circle.y)*(this.y-circle.y);
-        d[1] = ((this.x+this.w) - circle.x)*((this.x+this.w) - circle.x)+(this.y - circle.y)*(this.y-circle.y);
-        d[2] = (this.x - circle.x)*(this.x - circle.x)+((this.y+this.h) - circle.y)*((this.y+this.h)-circle.y);
-        d[3] = ((this.x+this.w) - circle.x)*((this.x+this.w) - circle.x)+((this.y+this.h) - circle.y)*((this.y+this.h)-circle.y);
-        boolean res = false;
-        for(int dis : d){
-            if(dis<=(circle.r*circle.r)){res = true;break;}
+        //네 꼭지점 찾기
+        int[] ex = new int[4];
+        int[] ey = new int[4];
+        ex[0] = ex[1] = this.x;
+        ex[2] = ex[3] = this.x+this.w;
+        ey[0] = ey[2] = this.y;
+        ey[1] = ey[3] = this.y+this.h;
+        for(int i=0;i<4;i++){
+            if(circle.isIn(ex[i],ey[i])){return true;}
         }
-        return res;
+        return false;
     }
-    
+
+    @Override
     //충돌판정 상대방에 따라 필요한 충돌함수를 실행
     public boolean overlappedWith(Geometry geo){
         if(geo instanceof Circle){ //geo가 Circle의 인스턴스인가?
