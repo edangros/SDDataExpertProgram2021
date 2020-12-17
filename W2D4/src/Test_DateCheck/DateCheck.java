@@ -1,9 +1,6 @@
 package Test_DateCheck;
 
-import java.util.ArrayList;
-
 public class DateCheck {
-    InvalidDayException invalidDayException = new InvalidDayException("잘못된 날짜입니다");//날짜 잘못된 에러 정의
     private int day, month, year;
     //'throws' -> 어떤 에러가 발생했을 때, 이 메서드를 실행한 코드에 에러가 발생했음을 알립니다.
     //이 경우 try-catch 구문을 통해 에러를 잡을 수 있습니다.
@@ -11,7 +8,16 @@ public class DateCheck {
         this.day = pDay;
         this.month = pMonth;
         this.year = pYear;
-        if(!isValidDate()){throw invalidDayException;}//잘못되었으면 에러를 던집니다.
+        if(!isValidDate()){throw invalidDayException();}//잘못되었으면 에러를 던집니다.
+    }
+
+    //에러메세지를 설정해서 에러를 반환하는 메서드입니다. 내가 에러메세지를 생성해서 제출하는 거니 굳이 public일 이유가 없습니다.
+    //밖에서 쓰지 않을 모든 것은 private로 해놓는게 바람직합니다.
+    //(여러개가 필요없는 개체는 '싱글톤 패턴'이나 static으로 정의하는게 바람직)
+    //(밖에서 쓰지 않을 모든 것은 private로 해놓는게 바람직)
+    private InvalidDayException invalidDayException(){
+        //에러메세지에 설정하려 했던 날짜를 집어넣어 출력합니다.
+        return new InvalidDayException(String.format("%d년 %d월 %d일은 잘못된 날짜입니다",this.year,this.month,this.day));
     }
 
     public Boolean isValidDate(){
@@ -47,7 +53,7 @@ public class DateCheck {
     public void setDay(int pDay) throws InvalidDayException {
         System.out.println(this.hashCode()+": set day as "+pDay);
         this.day = pDay;
-        if(!isValidDate()){throw invalidDayException;}//잘못되었으면 에러를 던집니다.
+        if(!isValidDate()){throw invalidDayException();}//잘못되었으면 에러를 던집니다.
     }
 
     public int getMonth() {
@@ -58,7 +64,7 @@ public class DateCheck {
     public void setMonth(int pMonth) throws InvalidDayException {
         System.out.println(this.hashCode()+": set month as "+pMonth);
         this.month = pMonth;
-        if(!isValidDate()){throw invalidDayException;}//잘못되었으면 에러를 던집니다.
+        if(!isValidDate()){throw invalidDayException();}//잘못되었으면 에러를 던집니다.
     }
 
     public int getYear() {
@@ -69,7 +75,7 @@ public class DateCheck {
     public void setYear(int pYear) throws InvalidDayException {
         System.out.println(this.hashCode()+": set year as "+pYear);
         this.year = pYear;
-        if(!isValidDate()){throw invalidDayException;}//잘못되었으면 에러를 던집니다.
+        if(!isValidDate()){throw invalidDayException();}//잘못되었으면 에러를 던집니다.
     }
 
 
