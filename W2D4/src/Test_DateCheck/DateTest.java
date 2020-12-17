@@ -12,7 +12,7 @@ public class DateTest {
         }
         try {
             date = new DateCheck(15,3,2000);//이번엔 정상실행되겠지
-            System.out.printf("%d년 %d월 %d일\n",date.getYear(),date.getMonth(),date.getDay());//getter로 호출해보기
+            date.showDate();
             date.setDay(25);
             date.setMonth((12));
             date.setYear((2015));
