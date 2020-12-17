@@ -7,7 +7,7 @@ public class DateTest {
         try{
            date = new DateCheck(45,2,2000);//에러가 발생! 2000년 2월 45일은 없으니까
         }
-        catch (InvalidDayException e) {
+        catch (InvalidDateException e) {
             e.printStackTrace();
         }
         try {
@@ -20,7 +20,7 @@ public class DateTest {
             //ToString을 override했기 때문에 DataCheck->String 자동 형변환이 일어나서 println에 바로 삽입 가능!
             System.out.println(date);
             date.setMonth(2);//여기서 에러 떠야함! (2월 30일은 잘못된 날짜니까!)
-        } catch (InvalidDayException e) {
+        } catch (InvalidDateException e) {
             e.printStackTrace();
         }
     }
