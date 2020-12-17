@@ -26,7 +26,7 @@ public class DateCheck {
 
     public Boolean isValidDate(){
         if((this.month>12)){return false;}//'달'은 12 이하여야 함
-        if((this.day<0)||(this.month<0)){return false;}//'일'과 '달'은 무조건 양수여야 함
+        if((this.day<1)||(this.month<1)){return false;}//'일'과 '달'은 무조건 1 이상이어야 함
         switch(month){
             //2월 검사는 2페이즈 (윤년 or not)
             case 2:
