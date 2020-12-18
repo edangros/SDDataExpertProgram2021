@@ -22,9 +22,17 @@ public class GameDataManager {
     //GameDataManager는 static이 아닙니다. 이걸 명심하세요
     //따라서 아래의 모든 게임정보를 가진 해시테이블(=파이썬 딕셔너리.무겁겠죠)은 instance가 만들어지기 전엔 생기지 않습니다.
     private Hashtable<Integer,Weapon> weapons = new Hashtable<>();
+    public Weapon getWeapon(int weaponId){
+        return weapons.get(weaponId);
+    }
     private Hashtable<Integer,Monster> monsters = new Hashtable<>();
+    public Monster getMonster(int monsterId){
+        return monsters.get(monsterId);
+    }
     private Hashtable<Integer,StatusEffect> statusEffects = new Hashtable<>();
-
+    public StatusEffect getStatusEffect(int statusEffectId){
+        return statusEffects.get(statusEffectId);
+    }
     private void initializeDataSet(){
         int i = 0;//원래는 파일이나 데이터베이스로 처리하는 부분이지만... 인덱스 꼼수를 씁시다
         weapons.put(i,new Weapon_Sword("Wooden Sword",10,3));
@@ -54,6 +62,6 @@ public class GameDataManager {
         //상태 정의
         i=0;
         statusEffects.put(i,new StatusEffect_Poison(1));
-        statusEffects.put(i++,new StatusEffect_Poison(3));
+        statusEffects.put(++i,new StatusEffect_Poison(3));
     }
 }

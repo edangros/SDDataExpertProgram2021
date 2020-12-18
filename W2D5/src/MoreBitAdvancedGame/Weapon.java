@@ -30,7 +30,8 @@ public class Weapon {
     }
 
     //무기라면 공격할 수 있어야겠죠. 이번엔 아무 처리도 하지 않습니다. 자식 클래스가 처리할거에요.
-    public void attack(Character target){ //몬스터가 플레이어를 때릴 일이 있을지도 모르므로 Monster->Character로 변경!
+    //몬스터가 플레이어를 때릴 일이 있을지도 모르므로 Monster->Character로 변경! 공격자 정보도 확인!
+    public void attack(Character target, Player attacker){
     }
     //damage, attspeed의 getter 정의해줍시다.
     public int getDamage(){

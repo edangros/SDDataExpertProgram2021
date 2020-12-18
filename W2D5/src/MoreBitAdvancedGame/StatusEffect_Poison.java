@@ -4,13 +4,13 @@ package MoreBitAdvancedGame;
 public class StatusEffect_Poison extends StatusEffect{
     private final int poisonDamage;//독데미지로 줄 내용입니다.
     public StatusEffect_Poison(int strength){
-        poisonDamage = strength;
+        this.poisonDamage = strength;
     }
     @Override
     public void execute(Character character) {
         //작동할 때, 캐릭터에게 데미지를 줍니다.
-        System.out.println(character.getName()+"이"+ poisonDamage+"의 독데미지를 입었다!");
-        character.damageThis(poisonDamage);
+        System.out.println(character.getName()+"이"+ this.poisonDamage+"의 독데미지를 입었다!");
+        character.damageThis(this.poisonDamage);
     }
     //독화살 상태는 스탯에는 아무 변화도 주지 않습니다.
     @Override
