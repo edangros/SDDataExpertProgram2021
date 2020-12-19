@@ -1,6 +1,6 @@
 import pandas as pd
 
-#pandas의 기본 파싱 문자는 ','와 '|'가 있음
+#pandas의 기본 파싱 구분자는 ','와 '|'가 있음
 #따라서 아래 두 파일은 같은 결과를 나타내게 됨!
 
 #이재호/MovieLens/data/testmovie.csv
@@ -19,6 +19,7 @@ import pandas as pd
 movies = pd.read_csv('이재호/MovieLens/data/testmovie.csv')
 print(movies)
 print(movies.genres.str.get_dummies())
+
 
 #이재호/MovieLens/data/testmovie2.csv
 '''
