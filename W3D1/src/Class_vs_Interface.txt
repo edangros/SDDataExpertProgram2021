@@ -46,3 +46,5 @@ Human implements IMovable / 사람은 움직이는 기능을 보유한다. ('움
 
 Styler extends Electronics{
     Dryability dryability = new Dryability(); <- 동사가 아니라 명사가 되어서 들어왔다.
+
+Styler extends DryableThings{<-아예 동사를 명사로 바꾸어서 상속받아버렸다.
