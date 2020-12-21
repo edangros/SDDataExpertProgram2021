@@ -35,7 +35,7 @@ public class Character {
         }
     }
 
-    int hp;
+    protected int hp;
     public Character(String name, int hp, int armor, int damage) {
         this.data = new Data(name,hp,armor,damage);
         this.hp = this.data.getHp();
