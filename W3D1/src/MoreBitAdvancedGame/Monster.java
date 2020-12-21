@@ -1,7 +1,5 @@
 package MoreBitAdvancedGame;
 
-import MoreBitAdvancedGame.Character.Data;
-
 //몬스터 클래스입니다.
 public class Monster extends Character{
 
@@ -13,8 +11,8 @@ public class Monster extends Character{
 
     //데미지 입으면 '아야' 합시다
     @Override
-    protected int onDamaged(int damage) {
-        int res = super.onDamaged(damage);
+    protected int onHit(int damage) {
+        int res = super.onHit(damage);
         if(res >0){System.out.println(this.getName()+": 아야");}
         this.executeStatusEffects();//맞았을때 독 받아야지!
         return damage;

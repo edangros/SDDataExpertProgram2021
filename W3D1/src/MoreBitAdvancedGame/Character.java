@@ -5,6 +5,8 @@ import java.util.Collections;
 
 //플레이어와 몬스터의 부모 클래스, 캐릭터입니다.
 public class Character {
+
+    //DB
     private Data data;//데이터 개체는 캡슐화되어 외부에서 직접 접근은 못함
     //데이터 개체는 변하지 않는 고정된 데이터베이스값!
     class Data{
@@ -41,6 +43,7 @@ public class Character {
         this.hp = this.data.getHp();
     }
 
+    //GetSet
     //getter setter 선언하는데. setter는 많이 숨겨지고 없는 경우도 많습니다.
     //게임에서 버프 없이 스탯 변하는 일은 거의 없으니까요. 대신 효과 적용은 버프를 통해 움직입니다.
     public int getHp() {
@@ -57,24 +60,15 @@ public class Character {
     //hp의 모든 세터들은 체력 변화량을 리턴합니다.(화면 표시용)
     //hp의 첫 번째 세터 -> 체력을 데이터베이스상 체력의 일정 비율로 조절
     public int setHpPercentage(int percent){
-        return this.hp = (int)(this.data.hp*percent*0.01);
+        return this.setHp(Math.min((int)(this.data.hp*percent*0.01),this.getMaxHp()));//그런다고 최대체력을 넘기긴 ㄴㄴ
     }
     //hp의 두 번째 세터 -> 체력을 깎음
-    public int damageThis(int amount){
+    public int hitThis(int amount){
         if(amount<0){return 0;}//변경량이 0 이하면 반영 안함
-        int damage = onDamaged(amount);
+        int damage = onHit(amount);
         damage = setHp(Math.max(this.hp-damage,0));
         if(this.getHp()<=0){this.onDeath();} //죽었으면 죽음처리
         return damage;//체력을 0 이하로 떨어뜨리진 않고 데미지 처리
-    }
-    //데미지 이벤트 처리용. 부모 클래스에서는 아무것도 안하고 자식 클래스에서 처리
-    //다만 변경된 데미지를 다시 리턴해주긴 해야함
-    protected int onDamaged(int damage){
-        return damage;
-    }
-    //죽었을 경우도 이벤트로 분리(아직은 초보적인 이벤트고 차차 발전시킬 예정)
-    protected void onDeath(){
-
     }
     //hp의 세 번째 세터 -> 체력을 회복
     public int healThis(int amount){
@@ -113,6 +107,20 @@ public class Character {
         return this.data.name;
     }
 
+    //이벤트 처리부
+    //데미지 이벤트 처리용. 부모 클래스에서는 아무것도 안하고 자식 클래스에서 처리
+    //다만 변경된 데미지를 다시 리턴해주긴 해야함
+    protected int onHit(int damage){
+        return damage;
+    }
+    //죽었을 경우도 이벤트로 분리(아직은 초보적인 이벤트고 차차 발전시킬 예정)
+    protected void onDeath(){
+
+    }
+
+
+
+    //상태이상
 
     //역할 체인을 만들겁니다.
     //역할 체인은 원래 A개체 내부에 다음 개체 B로 보내라고, B 개체 내에 C로...가 정석이지만
