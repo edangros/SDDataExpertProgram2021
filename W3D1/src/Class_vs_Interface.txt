@@ -25,7 +25,7 @@ Human implements IMovable / 사람은 움직이는 기능을 보유한다. ('움
 
 
 따라서 모든 클래스명은 명사로 되어있다. (ex: MovableObject)
-모든 인터페이스명은 기능성이나 가능성으로 되어있다 (ex: IMovable)
+인터페이스명은 기능성이나 가능성으로 되어있다 (ex: IMovable)
 
 
 
