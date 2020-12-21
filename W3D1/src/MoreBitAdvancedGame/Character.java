@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 //플레이어와 몬스터의 부모 클래스, 캐릭터입니다.
-public class Character {
+public abstract class Character {
 
     //DB
     private Data data;//데이터 개체는 캡슐화되어 외부에서 직접 접근은 못함
@@ -121,7 +121,6 @@ public class Character {
 
 
     //상태이상
-
     //역할 체인을 만들겁니다.
     //역할 체인은 원래 A개체 내부에 다음 개체 B로 보내라고, B 개체 내에 C로...가 정석이지만
     //여기서는 큐와 유사한 구조를 가지는 리스트 + 해석기로 처리하겠습니다.
