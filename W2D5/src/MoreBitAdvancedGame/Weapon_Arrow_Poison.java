@@ -11,7 +11,7 @@ public class Weapon_Arrow_Poison extends Weapon_Arrow {
     @Override
     public void attack(Character target, Player attacker) {
         //대상의 독 중첩수를 검사해 3번이 안된다면 독효과를 부여합니다.
-        if(target.countStatusEffect(this.statusEffect)>3){target.registerStatusEffect(this.statusEffect);}
+        if(target.countStatusEffect(this.statusEffect)<3){target.registerStatusEffect(this.statusEffect);}
         //나머지 시행
         super.attack(target,attacker);
     }
