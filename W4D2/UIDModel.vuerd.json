@@ -2,8 +2,8 @@
   "canvas": {
     "width": 2000,
     "height": 2000,
-    "scrollTop": 35.20000076293945,
-    "scrollLeft": 8.800000190734863,
+    "scrollTop": 97.5999984741211,
+    "scrollLeft": 243.1999969482422,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -17,7 +17,7 @@
     },
     "database": "MySQL",
     "databaseName": "",
-    "canvasType": "ERD",
+    "canvasType": "Visualization",
     "language": "GraphQL",
     "tableCase": "pascalCase",
     "columnCase": "camelCase",
@@ -829,7 +829,7 @@
           "direction": "bottom"
         },
         "id": "cb87bdd1-a7e0-e342-ca4e-656cb8aacc3d",
-        "relationshipType": "OneN"
+        "relationshipType": "ZeroOneN"
       },
       {
         "identification": true,
