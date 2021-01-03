@@ -43,15 +43,17 @@
 ## Kafka, Hadoop, Spark를 사용한 데이터 프로세스 예시
 셋의 역할과 차이를 알아보기 위해서는 예시를 통해서 파악하는 게 필요
 
+![전체 시스템](res/KHSintro1.png)
+
 예시는 시스템의 일부며, 서로간의 역할은 조정되거나, 다른 외부 솔루션을 사용할 수도 있음
 
-아래 내용은 [Jayesh Nazre의 2017년 블로그 포스트](https://pmtechfusion.blogspot.com/2017/11/big-datadata-science-analytics-apache_20.html)에 기반하고 있으며
+해당 빅데이터 시스템 구축에 관한 내용은 [Jayesh Nazre의 2017년 블로그 포스트](https://pmtechfusion.blogspot.com/2017/11/big-datadata-science-analytics-apache_20.html)에 기반하고 있으며
 그동안 프레임워크에 일어난 변화를 반영하기 위해 다음 내용을 참고하였음
 * [Apache Kafka 공식 문서](https://kafka.apache.org/documentation/)
-* [그로윈 하둡 제품 설명](https://www.growin.co.kr/hadoop)
+* [그로윈 하둡/스팍 제품 설명](https://www.growin.co.kr/hadoop)
 
 
-### Hadoop
+### [Hadoop](hadoop.md)
 ---
 ![그로윈 하둡 에코시스템 설명](https://static.wixstatic.com/media/b0bfeb_84e43b0fda7b414f885618f992d7b7f7~mv2.png/v1/fill/w_750,h_518,al_c,q_90,usm_0.66_1.00_0.01/hadoop01.webp)
 Hadoop(하둡)은 분산형 데이터의 저장 및 처리를 위해 만들어진 프레임워크로 아래와 같은 모듈로 구성됨
@@ -59,11 +61,62 @@ Hadoop(하둡)은 분산형 데이터의 저장 및 처리를 위해 만들어�
 * MapReduce : 빅데이터의 처리를 위한 실행 프레임워크. 병렬 배치 연산(MapReduce)기능을 사용
   * 아파치에서는 차세대 프레임워크 Apache Tez를 배포하고 있음
 * YARN : 클러스터의 자원 및 스케줄링을 담당
+
 이 아키텍쳐 예재에서는 아래와 같은 역할을 담당
 * 빅데이터 처리를 위해 **Kafka 사용자\(Consumers\)** 가 사용
 * **Spark**의 출력 결과를 저장
 * 클러스터의 종합 관리자로 사용( **YARN** )
 
-### Kafka
+### [Kafka](kafka.md)
 -----
+다대다 빅데이터 기록/구독 스트림을 만들 수 있는 프레임워크. 아래와 같이 구성된다.
 
+![KAFKA의 구성](https://drive.google.com/uc?export=view&id=0B6p_m8EvqxeuS2xSbGowMFZVVkU)
+
+* Producer : *여러* KAFKA 토픽에 스트림을 개시시킬수 잇음 (데이터의 소스)
+* Consumer : *여러* KAFKA 토픽으로부터 스트림을 받을 수 있음 (데이터의 도착지)
+* Streams : *여러* 입력 스트림으로부터 데이터를 읽고 변환, *여러* 출력 스트림으로 보낼 수 있음
+* Connector : 재사용가능한 Producer나 Consumer를 KAFKA 토픽에 연결시킬 수 있음
+
+이 아키텍처에서는 Hadoop에서 받은 데이터를 Spark로 보내는 스트림을 제공하는 역할
+
+### [Spark](spark.md)
+---
+여러 종류의 연산을, *인메모리*로 빠르게, 여러 대의 분산된 노드에서 연산을 할 수 있게 해주는 범용 분산 클러스터링 플랫폼.
+
+어떠한 아키텍처에 종속되지 않은 채 하나의 툴에서 빠른 속도로, 데이터 분석과 실시간 데이터 정제, 처리, 리포팅까지 가능한 강력한 플랫폼
+
+![스팍의 구성](https://static.wixstatic.com/media/b0bfeb_994e6d314bb84c3dbe7c763c5758d274~mv2.png/v1/fill/w_399,h_211,al_c,lg_1,q_85/spark02.webp)
+
+* Spark Core : 작업 스케줄링, 리소스 관리, 장애 복구 등 기본적인 아키텍처의 실행 관리
+* Spark SQL : SQL 등 다양한 데이터소스로부터 데이터 취득 가능
+* Spark Streaming : 실시간 데이터 스트림을 처리
+* MLLib : 머신러닝용 라이브러니
+* Graph X : 데이터의 시각화(그래프 그리기)
+* Hadoop YARN, 아파치 MesOS등 클러스터 매니저 위에서 작동
+
+### 위 아키텍쳐의 적용
+---
+위의 아키텍쳐는 다음과 같이 볼 수 있다.
+
+1. Hadoop의 HDFS 데이터베이스로부터 어떠한 처리가 일어난다
+2. 해당 처리로부터 발생한 데이터 스트림을 Kafka가 Producer로써 처리하고, 이를 Consumer인 Spark 클러스터로 보낸다.
+3. Spark는 Hadoop YARN 위에서 동작할수도, 아닐 수도 있다.
+4. Spark는 처리 결과를 Hadoop HDFS에 기록한다
+
+아래 그림은 이를 통한 웹 로그 처리 시스템이다.
+
+![웹 서버 로그 시스템](res/KHSintro2.png)
+
+1. 웹 서버는 하둡의 HDFS에 접속한다.
+2. 그 결과는 클라이언트에 로드된다.
+3. 클라이언트가 어떠한 행위를 한다면, 그에 대한 메세지가 Kafka의 Producer로 작동하여 입력 스트림이 된다.
+4. Spark Cluster는 Kafka의 Consumer 토픽을 맡는다. 분석되어야 할 메세지들은 Spark 클러스터로 출력 스트림을 통해 전송된다.
+5. Spark Cluster는 Hadoop의 YARN 위에서 작동하고 있다.
+6. Spark는 처리된 결과 데이터를 HDFS에 새로 입력한다.
+7. 각종 관리자 툴 및 분석 툴은 HDFS로부터 처리 결과를 받을 수 있다. 이 데이터는 마케팅 등에 사용하거나 취약점 분석 등 보안 문제, 잘못된 결재 내역 등을 찾는 데에 사용할 수 있다.
+
+이 시스템을 아래와 같이 변형할 수도 있을 것이다.
+* 이 시스템상에서 Hadoop의 목적은 HDFS상의 빅데이터를 제공하는 용도이다. 만일, 데이터의 범위가 MySQL등으로도 커버되는 전통적인 범위라면, Hadoop은 해당 시스템에서 제외되어도 무방하다. Kafka와 Spark만으로도 시스템을 구동할 수 있는 것이다.
+* Spark는 입력 데이터를 유연하게 받아들일 수 있다. Kafka 대신 다른 데이터 스트림 시스템 (Storm 등)을 사용할 수도 있고, Stream 모듈 대신 Spark SQL모듈을 사용해 다른 DBMS와 연결시킬 수도 있을 것이다.
+* 굳이 모든 클러스터가 물리 서버일 이유는 없다. 클라우드 서비스를 통해 필요 사용량에 맞게 스케일링되는 시스템을 구축할 수도 있을 것이다.
