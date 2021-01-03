@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JStudy.iml" filepath="$PROJECT_DIR$/JStudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/W2D2/W2D2.iml" filepath="$PROJECT_DIR$/W2D2/W2D2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/W2D3/W2D3.iml" filepath="$PROJECT_DIR$/W2D3/W2D3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/W2D4/W2D4.iml" filepath="$PROJECT_DIR$/W2D4/W2D4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/W2D5/W2D5.iml" filepath="$PROJECT_DIR$/W2D5/W2D5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/W3D1/W3D1.iml" filepath="$PROJECT_DIR$/W3D1/W3D1.iml" />
+    </modules>
+  </component>
+</project>
