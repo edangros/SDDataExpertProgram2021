@@ -1,0 +1,11 @@
+{
+
+    "python.analysis.extraPaths": [
+        "C:/PyStudy/이재호/day3",
+        "C:/PyStudy/이재호/day2",
+        "C:/PyStudy/이재호/day1",
+        "C:/PyStudy/이재호/MovieLens"
+    ],
+    "python.pythonPath": "C:\\Anaconda3\\python.exe",
+    "code-runner.cwd": "C:/PyStudy"
+}
