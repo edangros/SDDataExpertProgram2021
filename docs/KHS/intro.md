@@ -30,10 +30,40 @@
 * **비정형 데이터는 고정된 필드가 정의될 수 없음. 사진, 동영상, 포스팅이나 채팅 내용 등**
   * (여기서 채팅 데이터 자체는 정형 데이터로 처리가 가능하지만, *채팅으로 친 내용*은 비정형임에 유의)
   
-  
-## Kafka, Hadoop, Spark의 전체적인 아키텍쳐
+따라서, 채팅 데이터는 TB단위가 아니어도 빅데이터(Velocity + Variety)
+
+센서데이터는 TB단위로 쌓일 경우 빅데이터(Volume + Velocity)
+
+망해서 데이터가 더이상 쌓이지 않는 싸이월드의 데이터도 빅데이터(Volume + Variety)
+
+---
+
+---
+
+## Kafka, Hadoop, Spark를 사용한 데이터 프로세스 예시
+셋의 역할과 차이를 알아보기 위해서는 예시를 통해서 파악하는 게 필요
+
+예시는 시스템의 일부며, 서로간의 역할은 조정되거나, 다른 외부 솔루션을 사용할 수도 있음
+
 아래 내용은 [Jayesh Nazre의 2017년 블로그 포스트](https://pmtechfusion.blogspot.com/2017/11/big-datadata-science-analytics-apache_20.html)에 기반하고 있으며
 그동안 프레임워크에 일어난 변화를 반영하기 위해 다음 내용을 참고하였음
 * [Apache Kafka 공식 문서](https://kafka.apache.org/documentation/)
 * [그로윈 하둡 제품 설명](https://www.growin.co.kr/hadoop)
+
+
+### Hadoop
+---
+![그로윈 하둡 에코시스템 설명](https://static.wixstatic.com/media/b0bfeb_84e43b0fda7b414f885618f992d7b7f7~mv2.png/v1/fill/w_750,h_518,al_c,q_90,usm_0.66_1.00_0.01/hadoop01.webp)
+Hadoop(하둡)은 분산형 데이터의 저장 및 처리를 위해 만들어진 프레임워크로 아래와 같은 모듈로 구성됨
+* HDFS : 빅데이터 저장을 위한 분산형 파일 저장시스템
+* MapReduce : 빅데이터의 처리를 위한 실행 프레임워크. 병렬 배치 연산(MapReduce)기능을 사용
+  * 아파치에서는 차세대 프레임워크 Apache Tez를 배포하고 있음
+* YARN : 클러스터의 자원 및 스케줄링을 담당
+이 아키텍쳐 예재에서는 아래와 같은 역할을 담당
+* 빅데이터 처리를 위해 **Kafka 사용자\(Consumers\)** 가 사용
+* **Spark**의 출력 결과를 저장
+* 클러스터의 종합 관리자로 사용( **YARN** )
+
+### Kafka
+-----
 
