@@ -4,8 +4,8 @@
 
 현재 진행중인 내용은 아래와 같습니다.
 
-- [ ] [Kafka / Hadoop / Spark](KHS.md)
-- [ ] [ELk stack](ELK.md)
+- [ ] [Kafka / Hadoop / Spark](KHS/intro.md)
+- [ ] [ELk stack](ELK/intro.md)
 
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
