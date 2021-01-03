@@ -1,4 +1,5 @@
 # Kafka
+
 해당 포스트는 아래 글을 기반으로 작성되었다.
 * [Apache Kafka 공식 문서](https://kafka.apache.org/documentation/)
 * [www.joinc.co.kr의 Kafka 페이지](https://www.joinc.co.kr/w/man/12/Kafka)
