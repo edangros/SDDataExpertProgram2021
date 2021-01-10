@@ -6,6 +6,7 @@
 
 - [ ] [Kafka / Hadoop / Spark](KHS/intro.md)
 - [ ] [ELk stack](ELK/intro.md)
+- [ ] [NoSQL DB](NoSQL/intro.md)
 
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
