@@ -10,25 +10,6 @@
 * [Apache Hive Essentials 2nd Edition](https://subscription.packtpub.com/book/application_development/9781788995092/) - packt, Overview 부분
 <br><br>
 
-## 목차
-1. [하둡 생태계](#)
-2. [하둡의 기본 3요소](#3)
-* 2.1. [YARN (Yet Another Resource Negotiator)](#YARNYetAnotherResourceNegotiator)
-3. [HDFS (Hadoop Distributed FileSystem)](#HDFSHadoopDistributedFileSystem)
-* 3.1. [HDFS의 기본 가정](#HDFS)
-    * 3.1.1. [하드웨어 고장](#-1)
-    * 3.1.2. [데이터 스트리밍](#-1)
-    * 3.1.3. [거대한 데이터 세트](#-1)
-    * 3.1.4. [간단한 의존성 모델](#-1)
-    * 3.1.5. [연산장치를 옮기는 것이 데이터를 옮기는 것보다 저렴하다](#-1)
-    * 3.1.6. [다양한 플랫폼과 하드웨어로의 이전 능력](#-1)
-* 3.2. [HDFS 아키텍처](#HDFS-1)
-* 3.3. [HDFS상 파일 저장](#HDFS-1)
-* 3.4. [HDFS상 파일 읽기](#HDFS-1)
-4. [MapReduce](#MapReduce)
-* 4.1. [잡(Job)](#Job)
-<br><br><br>
-
 ##  1. <a name=''></a>하둡 생태계
 
 ![하둡 생태계](https://static.packt-cdn.com/products/9781788995092/graphics/c8625da0-2ffb-41b7-bba8-58c33af68a30.png)
