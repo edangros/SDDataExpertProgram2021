@@ -8,6 +8,7 @@
 - [ ] [ELk stack](ELK/intro.md)
 - [ ] [NoSQL DB](NoSQL/intro.md)
 
-- [ ] [실습 - 리눅스/RemoteSSH](Practices/1_linux.md)
+- [x] [실습 - 리눅스/RemoteSSH](Practices/1_linux.md)
+- [ ] [실습 - ELK 스택](Practices/2_ELK.md)
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
