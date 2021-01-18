@@ -101,3 +101,64 @@ hello world
 이로써 리눅스 환경에서 파이썬 실행시킬 준비는 끝났다. 뭔가 너무 쉬워서 찝찝한 느낌인데, 문제가 터지면 그때 가서 해결하자.
 
 아나콘다 환경이 리눅스에 존재한다면, 아마 그 아나콘다 경로로 들어가서 걸어주면 OK일 거다. 해보진 않았지만 아마 그럴거야....
+
+## 3. Jupyter notebook 실행
+다 잘 풀릴줄 알았는데 주피터 노트북 (.ipynb)는 실행이 또 안된다(...) 일단, 실행버튼 누르면 오류가 주르륵 뜨고, 노트북 실행에 필요한 라이브러리를 설치하겠냐는 창이 우하단에 뜬다.
+
+![아또왜요](res/47_notebook.png)
+
+설치해주고 나서 실행시키면 주피터 서버가 실행을 시작하는데...
+
+```
+Jupyter notebook failed to launch. 
+Error: Traceback (most recent call last):
+  File "/root/.vscode-server/extensions/ms-toolsai.jupyter-2020.12.414227025/pythonFiles/vscode_datascience_helpers/daemon/daemon_python.py", line 54, in _decorator
+    return func(self, *args, **kwargs)
+  File "/root/.vscode-server/extensions/ms-toolsai.jupyter-2020.12.414227025/pythonFiles/vscode_datascience_helpers/jupyter_daemon.py", line 108, in m_exec_module_observable
+    self._start_notebook(args, cwd, env)
+  File "/root/.vscode-server/extensions/ms-toolsai.jupyter-2020.12.414227025/pythonFiles/vscode_datascience_helpers/jupyter_daemon.py", line 162, in _start_notebook
+    app.launch_new_instance()
+  File "/root/.local/lib/python3.6/site-packages/jupyter_core/application.py", line 254, in launch_instance
+    return super(JupyterApp, cls).launch_instance(argv=argv, **kwargs)
+  File "/root/.local/lib/python3.6/site-packages/traitlets/config/application.py", line 664, in launch_instance
+    app.start()
+  File "/root/.local/lib/python3.6/site-packages/notebook/notebookapp.py", line 2253, in start
+    self.exit(1)
+  File "/root/.local/lib/python3.6/site-packages/traitlets/config/application.py", line 654, in exit
+    sys.exit(exit_status)
+SystemExit: 1
+
+[I 20:24:05.864 NotebookApp] The port 8888 is already in use, trying another port.
+
+
+[C 20:24:05.866 NotebookApp] Running as root is not recommended. Use --allow-root to bypass.
+
+
+Failed to run jupyter as observable with args notebook --no-browser --notebook-dir="/" --config=/tmp/77b49493-def4-4571-b5fa-f98b9b4421c2/jupyter_notebook_config.py --NotebookApp.iopub_data_rate_limit=10000000000.0
+
+```
+또 오류난다. 루트로 실행하지 말라는데... 우리 이거 명령어로 실행시키는거 아니라 플러그인으로 실행시키는건데?
+
+저기서 메세지를 보면 실행시 ```--allow-root```를 넣어주어야 root에서 jupyter 서버 구동이 가능하다고 한다. 간단하다. 실행 명령에 저걸 집어넣어주면 된다. 그런데... 어떻게?
+
+![아아](res/48_setting.png)
+
+extension탭의 Jupyter 옆에 있는 톱니바퀴를 누르고 Extension Settings로 들어가 설정창을 열자. 그리고 아래 항목을 찾는다.
+
+![고치자](res/49_setting2.png)
+
+저기서 Edit in settings.json을 누르면 설정 파일이 열리면서 항목을 수정할 수 있게 뜬다. 거기에서 이제 수정할 수 있게 커서가 위치해 있을 텐데, 아래와 같이 괄호 속에 실행 명령어를 같이 입력해주자.
+
+```
+...
+"jupyter.jupyterCommandLineArguments": [        
+    "--allow-root"
+]
+...
+```
+이제 실행시킬 때 --allow-root를 뒤에 붙여서 실행시킬테니, 멀쩡히 동작할 수 있을 것이다. 루트로 하면 모든게 편안할 줄 알았는데, 저런 문제가...
+
+json파일을 저장하면 창을 reload해달라고 뜰 텐데, 하고 다시 ssh인증을 밟아준 뒤 노트북 파일로 가서 실행하면 노트북이 잘 작동할 것이다.
+
+왠지 파이썬만 돌릴땐 너무 문제없이 잘 되더라. 역시나 함정이 숨어있네...
+
