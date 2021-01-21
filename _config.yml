@@ -12,7 +12,7 @@ title: 데이터시스템 구축 데이터
 email: edangros@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   2021년 센서데이터 기반 빅데이터 시스템 전문가 양성사업 학습내용 정리
-baseurl: "/SDDataExpertProgram2021/" # the subpath of your site, e.g. /blog
+baseurl: "/SDDataExpertProgram2021" # the subpath of your site, e.g. /blog
 url: "http://edangros.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: edangros
 highlighter: rouge
