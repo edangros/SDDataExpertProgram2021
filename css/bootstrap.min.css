@@ -181,7 +181,7 @@ td,th{
     }
     img{
         object-fit: scale-down;
-        max-width:100%!important
+        max-width: fit-content
     }
     p,h2,h3{
         orphans:3;
