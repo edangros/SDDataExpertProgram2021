@@ -1,24 +1,12 @@
+# This is the default format.
+# For more see: http://jekyllrb.com/docs/permalinks/
+permalink: /:title
+# https://help.github.com/articles/migrating-your-pages-site-from-maruku
+markdown: kramdown
 
-remote-theme: ejjoo/jekyll-theme-monos
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+highlighter: pygments
+paginate: 20 # pagination based on number of posts
+paginate_path: "page/:num"
 
 title: 데이터시스템 구축 데이터
 email: edangros@gmail.com
@@ -34,30 +22,15 @@ highlighter-theme: monokai
 date_format: "%Y-%M-%D"
 plugins:
   - jekyll-feed
-category_dir: category/
-tag_dir: tag/
+categories_path : categories.html
+tags_path : tags.html
+BASE_PATH : http://meliodus.github.io/uno-dbyll
+
 
 # disqus_shortname: 'your-disqus-name'
 
 author:
-  name: 'edangros'
-  email: edangros.gmail.com
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  name: edangros
+  role: student
+  email: edangros@gmail.com
+  github: edangros
