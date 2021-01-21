@@ -20,8 +20,7 @@ svg:
   optimize: true
 highlighter-theme: monokai
 date_format: "%Y-%M-%D"
-plugins:
-  - jekyll-feed
+
 categories_path : categories.html
 tags_path : tags.html
 BASE_PATH : http://meliodus.github.io/uno-dbyll
