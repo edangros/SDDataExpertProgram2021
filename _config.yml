@@ -1,74 +1,41 @@
-
-logo: # 120x120 px default image used for Twitter summary card
-teaser: # 400x250 px default teaser image used in image archive grid
-locale: en
-url:
-feed:
-  path: atom.xml
-
 # Jekyll configuration
 
-sass:
-  sass_dir: _sass
-  style: compressed
-permalink: /:categories/:title/
-kramdown:
-  toc_levels: 1..2
+name: 데이터 시스템 정리 데이터
+description: A jekyll theme
+
+# url is currently only used only for the RSS feed in feed.xml
+url: https://scotte.github.io/jekyll-clean
+
+# baseurl will often be '', but for a project page on gh-pages, it needs to
+# be the project name.
+# *** IMPORTANT: If your local "jekyll serve" throws errors change this to '' or
+#     run it like so: jekyll serve --baseurl=''
+url: https://edangros.github.io/
+baseurl: /SDDataExpertProgram2021
+
+# These can be '' to hide the Github or Gitlab nav buttons
+github: ''
+gitlab: ''
+
+# Set this to your UA-# value, or '' to disable the block completely
+gaaccount: ''
+
+# The 'comments' setting enables comments. You'll need to select either
+# disqus or isso below to choose a comment system. Individual posts can
+# override 'comments' to disable on a post-by-post basis.
+comments: false
+
+# Set this to your public isso URL to enable comments via isso. Set to '' to disable isso.
+isso: ''
+
+# Set this to your disqus shortname to enable comments via disqus. Set to '' to disable disqus.
+disqus: ''
+
+permalink: /:year/:month/:title
+paginate: 3
+
 highlighter: rouge
-plugins:
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
+markdown: kramdown
+gems: ['jekyll-paginate']
 
-
-include:
-  - .htaccess
-exclude:
-  - "*.less"
-  - "*.sublime-project"
-  - "*.sublime-workspace"
-  - .asset-cache
-  - .bundle
-  - .jekyll-assets-cache
-  - .sass-cache
-  - CHANGELOG
-  - Capfile
-  - Gemfile
-  - Gruntfile.js
-  - LICENSE
-  - README
-  - Rakefile
-  - config
-  - gulpfile.js
-  - lib
-  - log
-  - node_modules
-  - package.json
-  - spec
-  - tmp
-
-title: 데이터시스템 구축 데이터
-email: edangros@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  2021년 센서데이터 기반 빅데이터 시스템 전문가 양성사업 학습내용 정리
-baseurl: "/SDDataExpertProgram2021" # the subpath of your site, e.g. /blog
-url: "http://edangros.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-github_username: edangros
-highlighter: rouge
-svg:
-  optimize: true
-highlighter-theme: monokai
-date_format: "%Y-%M-%D"
-
-categories_path : categories.html
-tags_path : tags.html
-BASE_PATH : http://meliodus.github.io/uno-dbyll
-
-
-# disqus_shortname: 'your-disqus-name'
-
-author:
-  name: edangros
-  role: student
-  email: edangros@gmail.com
-  github: edangros
+exclude: ['README.md', 'LICENSE']
