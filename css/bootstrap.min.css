@@ -62,7 +62,8 @@ sub{
 }
 img{
     object-fit: scale-down;
-    border:0
+    border:0;
+    max-width: width 6px
 }
 svg:not(:root){
     overflow:hidden
@@ -181,7 +182,7 @@ td,th{
     }
     img{
         object-fit: scale-down;
-        max-width: 680px
+        max-width: width 680px
     }
     p,h2,h3{
         orphans:3;
@@ -871,6 +872,7 @@ figure{
     margin:0
 }
 img{
+    width: 680px;
     object-fit: scale-down;
     vertical-align:middle
 }
@@ -3055,7 +3057,7 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
     background-color:#e5e5e5
 }
 .nav>li>a>img{
-    max-width:none
+    max-width: width 680px;
 }
 .nav-tabs{
     border-bottom:1px solid #ddd
