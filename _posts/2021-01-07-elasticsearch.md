@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Elastic Stack"
+date: 2021-01-07 11:23:51 UTC+9
+comments: false
+---
 # Elasticsearch
 
 우리는 셀 수 없이 많은 데이터를 다루고 있다. 데이터 분석가는 그러한 데이터 뭉치로부터 정보(information)을 뽑아내는 것을 주요 업무로 한다. 이를 elastic사에서는 [data in](https://www.elastic.co/guide/en/elasticsearch/reference/current/documents-indices.html), [information out](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-analyze.html)으로 표현하고 있다.
