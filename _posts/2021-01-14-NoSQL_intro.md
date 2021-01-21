@@ -2,7 +2,7 @@
 layout: post
 title: "NoSQL"
 date: 2021-01-07 20:05:18 UTC+9
-comments: false
+comments: true
 ---
 
 
