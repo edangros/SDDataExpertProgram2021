@@ -45,7 +45,9 @@ exclude: ['README.md', 'LICENSE']
 collections:
   studyBD:
     group: ''
+    title: ''
     comment: true
   constructBD:
+    title: ''
     chapter: 0
     comment: true
