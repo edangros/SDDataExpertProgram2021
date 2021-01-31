@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: poCBD
 title: "시스템 재구축 주간 - 2. ELK스택 설치 및 Logstash 파이프라인 구축"
-date: 2021-01-21 18:55:48 UTC+9
+chapter: 2
 comments: true
 ---
 

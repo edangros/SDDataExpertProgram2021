@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: poCBD
 title: "시스템 재구축 주간 - 1.리눅스 가상머신 설치 및 Remote 원격제어 구축"
-date: 2021-01-19 22:25:35 UTC+9
+chapter: 1.1
 comments: true
 ---
 

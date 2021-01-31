@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: poCBD
 title: "시스템 재구축 주간 - 번외 : VSCode Remote를 이용한 리눅스 환경에서 파이썬 실행"
-date: 2021-01-21 23:42:08 UTC+9
+chapter: 1
 comments: true
 ---
 
