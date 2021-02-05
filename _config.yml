@@ -39,3 +39,15 @@ markdown: kramdown
 gems: ['jekyll-paginate']
 
 exclude: ['README.md', 'LICENSE']
+
+
+#collection setting
+collections:
+  studyBD:
+    group: ''
+    title: ''
+    comment: true
+  constructBD:
+    title: ''
+    chapter: 0
+    comment: true
