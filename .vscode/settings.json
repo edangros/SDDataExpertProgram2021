@@ -6,6 +6,8 @@
         "C:/PyStudy/이재호/day1",
         "C:/PyStudy/이재호/MovieLens"
     ],
-    "python.pythonPath": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
-    "code-runner.cwd": "C:/PyStudy"
+    "python.pythonPath": "C:\\Anaconda3\\python.exe",
+    "code-runner.cwd": "C:/PyStudy",
+    "jupyter.jupyterServerType": "remote",
+    "jupyter.allowUnauthorizedRemoteConnection": true
 }
