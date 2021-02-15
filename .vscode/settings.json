@@ -8,6 +8,6 @@
     ],
     "python.pythonPath": "C:\\Anaconda3\\python.exe",
     "code-runner.cwd": "C:/PyStudy",
-    "jupyter.jupyterServerType": "remote",
+    "jupyter.jupyterServerType": "local",
     "jupyter.allowUnauthorizedRemoteConnection": true
 }
